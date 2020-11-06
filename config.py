@@ -1,3 +1,1 @@
 
-
-GOOGLEMAPS_KEY = "AIzaSyA0LANTiviboHZ4fgFslpa4xxkYQ19p2qQ"
