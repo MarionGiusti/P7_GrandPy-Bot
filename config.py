@@ -1,3 +1,3 @@
+import os
 
-
-GOOGLEMAPS_KEY = "AIzaSyA0LANTiviboHZ4fgFslpa4xxkYQ19p2qQ"
+GOOGLEMAPS_KEY = os.environ.get('GOOGLEMAPS_KEY')
