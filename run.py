@@ -1,5 +1,5 @@
 #! /usr/bin/env python
-from gdpy_app import app
+from gdpy_app.website import app
 
 if __name__ == "__main__":
     app.run(debug=True)
