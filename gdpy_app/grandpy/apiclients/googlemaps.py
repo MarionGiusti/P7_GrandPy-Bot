@@ -1,44 +1,49 @@
+"""
+Class Maps:
+- Has a method call_maps() to request data from the GoogleMaps API
+- Returns coordinates and address
+"""
+
 import requests
 from gdpy_app.website import app
 
 class Maps:
-	""" Class to interact with API GoogleMaps and collect address 
-	and coordinate corresponding to the user input cleaned by the parser"""
-	
-	def __init__(self, clean_query):
-		""" Initialisation """
-		self.clean_query = clean_query
-		self.latitude = 0
-		self.longitude = 0
-		self.formatted_address = 0
-		self.found_place = ''
+    """ Class to request the API and collect address
+    and coordinate corresponding to the user input cleaned by the parser """
 
-	def call_maps(self):
-		""" Request and search coordinate from Google Maps Geocoding API"""
-		base_url = 'https://maps.googleapis.com/maps/api/geocode/json?'
-		address = self.clean_query
-		params = {
-			'key': app.config['GOOGLEMAPS_KEY'],
-			'address': address
-		}
+    def __init__(self, clean_query):
+        """ Initialisation """
+        self.clean_query = clean_query
+        self.latitude = 0
+        self.longitude = 0
+        self.formatted_address = 0
+        self.found_place = ''
 
-		req = requests.get(base_url, params=params)
-		response_json = req.json()
+    def call_maps(self):
+        """ Request and search coordinate from Google Maps Geocoding API"""
+        base_url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+        address = self.clean_query
+        params = {
+            'key': app.config['GOOGLEMAPS_KEY'],
+            'address': address
+        }
 
-		if response_json['status'] == 'OK':
-			geometry = response_json['results'][0]['geometry']
-			self.latitude = geometry['location']['lat']
-			self.longitude = geometry['location']['lng']
-			self.formatted_address = response_json['results'][0] ['formatted_address']
-			self.found_place = True
+        req = requests.get(base_url, params=params)
+        response_json = req.json()
 
-		else:
-			print('STATUS ERROR: ', req.status_code)
-			# Give coordinates and address as a dreamed destination for GrandPy
-			self.latitude = -42.1080556
-			self.longitude = 171.3361111111111
-			self.formatted_address = ''
-			self.found_place = False
+        if response_json['status'] == 'OK':
+            geometry = response_json['results'][0]['geometry']
+            self.latitude = geometry['location']['lat']
+            self.longitude = geometry['location']['lng']
+            self.formatted_address = response_json['results'][0]['formatted_address']
+            self.found_place = True
 
-		return self.latitude, self.longitude, self.formatted_address, self.found_place
+        else:
+            print('STATUS ERROR: ', req.status_code)
+            # Give coordinates and address as a dreamed destination for GrandPy
+            self.latitude = -42.1080556
+            self.longitude = 171.3361111111111
+            self.formatted_address = ''
+            self.found_place = False
 
+        return self.latitude, self.longitude, self.formatted_address, self.found_place

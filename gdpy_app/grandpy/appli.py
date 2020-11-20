@@ -1,31 +1,37 @@
-import json
+"""
+Module with main function answer() which creates instances of the
+QueryParser, Maps and Wiki Classes.
+Create random answer of GrandPy Bot.
+"""
 import random
 
 from gdpy_app.grandpy.apiclients.googlemaps import Maps
 from gdpy_app.grandpy.apiclients.wikipedia import Wiki
 from gdpy_app.grandpy.parsers import QueryParser
-from gdpy_app.grandpy.words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST, PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
+from gdpy_app.grandpy.words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST
+from gdpy_app.grandpy.words import PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
 
 def answer(question):
-    """ Analyse the user's question, call the APIs and return a json dictionnary """ 
+    """ Analyse the user's question, call the APIs and return a json dictionnary """
     ### Analyse the user's question
     query = QueryParser(question)
-    queryNormalize = query.normalize_query()
-    queryClean = query.parser_words()
+    query.normalize_query()
+    query_clean = query.parser_words()
 
-    ### Call the GoogleMaps API to get an address and coordinates 
+    ### Call the GoogleMaps API to get an address and coordinates
     ## from the queryClean
     query_maps = Maps(query.query_words)
     query_maps.call_maps()
     # print(query_maps.latitude, query_maps.longitude, query_maps.formatted_address)
     if query_maps.formatted_address == '':
-        first_answer_gdpy = random.choice(PYBOT_ANSWER_LOST);
-        query_maps.formatted_address = "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
+        first_answer_gdpy = random.choice(PYBOT_ANSWER_LOST)
+        query_maps.formatted_address = \
+        "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
     else:
-        first_answer_gdpy = random.choice(PYBOT_ANSWER_GOOD);
+        first_answer_gdpy = random.choice(PYBOT_ANSWER_GOOD)
 
 
-    ### Call the MediaWiki API to get the first lines from an article 
+    ### Call the MediaWiki API to get the first lines from an article
     ## corresponding to the queryClean
     query_wiki = Wiki(query.query_words)
     query_wiki.get_description_page_wiki()
@@ -39,10 +45,10 @@ def answer(question):
         second_answer_gdpy = random.choice(PYBOT_ANSWER_GET_STORY)
 
 
-    ### Return a jsonisable dictionnary with the answer from gdpy, the address, the coordinates, 
+    ### Return a jsonisable dictionnary with the answer from gdpy, the address, the coordinates,
     ## the wiki article and its url
     info_answer = {
-        'query': queryClean,
+        'query': query_clean,
         'first_answer_gdpy': first_answer_gdpy,
         'second_answer_gdpy': second_answer_gdpy,
         'latitude': query_maps.latitude,
@@ -53,5 +59,4 @@ def answer(question):
         'url_wiki': query_wiki.url
     }
 
-    return info_answer   
-
+    return info_answer
