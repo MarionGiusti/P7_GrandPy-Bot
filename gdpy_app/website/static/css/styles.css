@@ -122,7 +122,7 @@ header h2
 	border-radius: 0px 0px 5px 5px;
 	padding-top: 10px;
 	padding-left: 5px;
-	font-family: 'quicksandlight', Arial, sans-serif
+	font-family: 'quicksandlight', Arial, sans-serif;
 
 }
 
@@ -130,10 +130,11 @@ header h2
 /**************************************/
 h6
 {
-	font-family: 'quicksandlight', Arial, sans-serif
+	font-family: 'quicksandlight', Arial, sans-serif;
 	font-size:1.2em;
 
 }
+
 
 #indication
 {

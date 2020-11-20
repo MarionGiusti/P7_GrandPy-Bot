@@ -1,2 +1,2 @@
-import website.views as script
+# import website.views as script
 import pytest

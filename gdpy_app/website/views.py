@@ -15,23 +15,39 @@ app.config.from_object('config')
 def index():
 	return render_template('index.html')
 
-
 @app.route('/process', methods=['POST'])
-# """ 
-# 1. Récupérer la question depuis la requête HTTP
-# 2. appeler la fonction answer, en lui envoyant la question du visiteur en argument, et en récupérant le dictionnaire retourné
-# 3. Transforme le dictionnaire retourné en réponse HTTP json et retourne cette réponse.
-# """
+# Function index for the Ajax query
 def process():
+	# Get the question from the HTTP request
 	# result = request.form['userInput'];
 	req = request.form
-	result1 = req.get('userInput')
+	userQuery = req.get('userInput')
 
-	result = appli.answer(result1)
+	# Call the function answer with the user input in argument. Get back a dictionnary
+	result = appli.answer(userQuery)
 	
+	firstAnswerGdPy = result['first_answer_gdpy']
+	secondAnswerGdPy = result['second_answer_gdpy']
+	cleanQuery = result['query']
+	latitude = result['latitude']
+	longitude = result['longitude']
+	adress_formatted = result['address']
+	found_place = result['found_place']
+	url_wiki = result['url_wiki']
+	description_wiki = result['description_wiki']
 
-
-
+	# Transform the dictionnary in json HTTP respons and return this respons.
 	if result:
-		return jsonify({'result': 'user: ' + result[0]})
+		return jsonify({
+			'userQuery': userQuery,
+			'cleanQuery': cleanQuery, 
+			'firstAnswerGdPy': firstAnswerGdPy,
+			'secondAnswerGdPy': secondAnswerGdPy,
+			'latitude': latitude,
+			'longitude': longitude,
+			'adress_formatted': adress_formatted,
+			'found_place': found_place,
+			'url_wiki': url_wiki,
+			'description_wiki': description_wiki
+			})
 	return jsonify({'error' : 'Missing data'})

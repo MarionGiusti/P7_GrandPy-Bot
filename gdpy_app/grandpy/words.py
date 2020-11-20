@@ -6,10 +6,10 @@
 # 			  ]
 
 QUESTION_WORDS = [
-				"hello", "salut", "bonjour", "hey", "grandpy", "py", "bot",
-				"pybot", "papy",
-				"dis", "moi", "salut", "ou", "se trouve", "adresse", 
-				"connais", "connaissez", "est-ce-que", "aller"
+				"hello", "salut", "bonjour", "hey", "yo", "ola", "hi",
+				"grandpy", "py", "bot", "pybot", "papy",
+				"dis", "moi", "sais", "ou", "trouve", "adresse", 
+				"connais", "connaissez", "est-ce-que", "aller", "emmener"
 				]
 
 STOP_WORDS = [
@@ -92,3 +92,54 @@ STOP_WORDS = [
 			"vôtre","vôtres","w","x","y","z","zut","à","â","ça","ès","étaient",
 			"étais","était","étant","été","être","ô"
 			]
+
+PYBOT_ANSWER_GOOD = [
+	"Mais oui mon biquet ! Là voilà :",
+	"Bien sûr mon mimi, ça devrait être ça:",
+	"Avec plaisir mon p'tiot. Tadaaaaaam:",
+	"""Mazette, ça fait un bail que j'en avais pas entendu parlé !\n
+	Tiens :""",
+	"Bonjour p'tit! C'est ça que tu cherches?",
+	"Ola Moussaillon! Voici ta destination:",
+	"""Salut gamin, t'as bien poussé depuis le temps!\n
+	Tiens, c'est juste là:"""
+]
+
+PYBOT_ANSWER_LOST = [
+	"""Ca aurait été avec plaisir mon poussin, mais là je ne me souviens plus...\n
+	demande moi autre chose!""",
+	"""Oulala, je voudrais bien t'aider mais ça ne me revient pas !  
+	Tu as une autre demande?""",
+	"""Dediou j'ai la mémoire qui flanche! Une autre requête? """,
+	"""Mouais, la boussole de jadis peine à trouver son chemin...\n
+	T'as pas quelque chose de plus facile pour ton Pybot? """,
+	"""Tu le fais exprès? Tu voulais me piéger? 
+	Bah voilà, t'as gagné, j'en sais RIEN! """,
+	"Entre nous...si je connais pas c'est que ça en vaut pas la peine!",
+	"""Mais oui, ça me parle....PAS! 
+	Désolé chou, va falloir me demander autre chose."""
+]
+
+PYBOT_ANSWER_GET_STORY = [
+	"Hahahaaaa! Ca me rappelle bien des choses. Ecoute bien.",
+	"Dis poussin, je t'ai déjà raconté cette histoire?",
+	"Mais enfait, ça me fait penser.",
+	"Nom d'un castor, j'ai des souvenirs qui remontent!",
+	"Hop, hop, hop... t'en vas pas mon choupisson, j'ai des choses à te dire!",
+	"Par la barbe de Merlin, j'ai eu un flash!",
+	"Une encyclopédie je suis...écoute le vieux!"
+]
+
+PYBOT_ANSWER_NO_STORY = [
+	"Fichtre! Je me souviens plus ce que je voulais te raconter...",
+	"T'y crois toi? J'ai perdu le fil.",
+	"""Sapristi, ça m'agace quand je perds la boule. 
+	Je l'avais sur le bout de la langue mon histoire.""",
+	"Psssst, tu veux dormir moins bête? Et bah non, reste bête ça te vas bien.",
+	"Alors là, j'ai beau chercher, j'ai rien à ajouter...",
+	"Voilà, voilà...parfois il faut savoir rester concis.",
+	"""Ooooh la vie d'un pirate à bord d'une frégateeee, 
+	c'est la plus belleeee des vies!\n Quand je ne sais plus quoi dire,
+	je chante. Bécot.
+	"""
+]
