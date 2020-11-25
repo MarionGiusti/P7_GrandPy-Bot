@@ -1,1 +1,1 @@
-web: gunicorn gdpy_app:app
+web: gunicorn website:app
