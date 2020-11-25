@@ -1,0 +1,157 @@
+{
+    "google_results_ok": [
+        {
+            "results": [
+                {
+                    "address_components": [
+                        {
+                            "long_name": "Port de Plaisance du Moulin Blanc",
+                            "short_name": "Port de Plaisance du Moulin Blanc",
+                            "types": [
+                                "route"
+                            ]
+                        },
+                        {
+                            "long_name": "Brest",
+                            "short_name": "Brest",
+                            "types": [
+                                "locality",
+                                "political"
+                            ]
+                        },
+                        {
+                            "long_name": "Finistère",
+                            "short_name": "Finistère",
+                            "types": [
+                                "administrative_area_level_2",
+                                "political"
+                            ]
+                        },
+                        {
+                            "long_name": "Bretagne",
+                            "short_name": "Bretagne",
+                            "types": [
+                                "administrative_area_level_1",
+                                "political"
+                            ]
+                        },
+                        {
+                            "long_name": "France",
+                            "short_name": "FR",
+                            "types": [
+                                "country",
+                                "political"
+                            ]
+                        },
+                        {
+                            "long_name": "29200",
+                            "short_name": "29200",
+                            "types": [
+                                "postal_code"
+                            ]
+                        }
+                    ],
+                    "formatted_address": "Port de Plaisance du Moulin Blanc, 29200 Brest, France",
+                    "geometry": {
+                        "location": {
+                            "lat": 48.3899736,
+                            "lng": -4.4356012
+                        },
+                        "location_type": "GEOMETRIC_CENTER",
+                        "viewport": {
+                            "northeast": {
+                                "lat": 48.3913225802915,
+                                "lng": -4.434252219708498
+                            },
+                            "southwest": {
+                                "lat": 48.3886246197085,
+                                "lng": -4.436950180291502
+                            }
+                        }
+                    },
+                    "place_id": "ChIJu6O3B4u5FkgRZqRdBjZz718",
+                    "plus_code": {
+                        "compound_code": "9HQ7+XQ Brest, France",
+                        "global_code": "8CWQ9HQ7+XQ"
+                    },
+                    "types": [
+                        "aquarium",
+                        "establishment",
+                        "point_of_interest",
+                        "tourist_attraction"
+                    ]
+                }
+            ],
+            "status": "OK"
+        }
+    ],
+    "google_results_error": [
+        {
+            "error_message": "Invalid request. Missing the 'address', 'components', 'latlng' or 'place_id' parameter.",
+            "results": [],
+            "status": "INVALID_REQUEST"
+        }
+    ],
+    "wiki_description_results_ok": [
+        {
+            "batchcomplete": "",
+            "continue": {
+                "gsroffset": 1,
+                "continue": "gsroffset||"
+            },
+            "query": {
+                "pageids": [
+                    "150231"
+                ],
+                "pages": {
+                    "150231": {
+                        "pageid": 150231,
+                        "ns": 0,
+                        "title": "Océanopolis",
+                        "index": 1,
+                        "extract": "Océanopolis est un centre de culture scientifique consacré aux océans, situé à Brest, près du port de plaisance du Moulin Blanc. La forme du premier bâtiment, le pavillon tempéré, rappelle celle d'un crabe. Équipement public, Il est la propriété de Brest métropole et il est géré par une société d’économie mixte, Brest'aim."
+                    }
+                }
+            }
+        }
+    ],
+    "wiki_description_results_error": [
+        {
+            "error": {
+                "code": "missingparam",
+                "info": "The \"gsrsearch\" parameter must be set.",
+                "*": "See https://fr.wikipedia.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/mailman/listinfo/mediawiki-api-announce&gt; for notice of API deprecations and breaking changes."
+            },
+            "servedby": "mw1400"
+        }
+    ],
+    "wiki_url_results_ok": [
+        {
+            "batchcomplete": "",
+            "query": {
+                "pages": {
+                    "150231": {
+                        "pageid": 150231,
+                        "ns": 0,
+                        "title": "Océanopolis",
+                        "contentmodel": "wikitext",
+                        "pagelanguage": "fr",
+                        "pagelanguagehtmlcode": "fr",
+                        "pagelanguagedir": "ltr",
+                        "touched": "2020-11-21T12:39:49Z",
+                        "lastrevid": 175533769,
+                        "length": 17458,
+                        "fullurl": "https://fr.wikipedia.org/wiki/Oc%C3%A9anopolis",
+                        "editurl": "https://fr.wikipedia.org/w/index.php?title=Oc%C3%A9anopolis&action=edit",
+                        "canonicalurl": "https://fr.wikipedia.org/wiki/Oc%C3%A9anopolis"
+                    }
+                }
+            }
+        }
+    ],
+    "wiki_url_results_error": [
+        {
+            "batchcomplete": ""
+        }
+    ]
+}
