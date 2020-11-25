@@ -16,8 +16,6 @@ class Wiki:
         self.base_url = 'https://fr.wikipedia.org/w/api.php'
         self.data = {}
         self.page_id = []
-        self.description = ''
-        self.url = ''
 
     def wiki_api_call(self, params):
         """ Send the request to the Wiki API depending on the parameters """
@@ -43,14 +41,20 @@ class Wiki:
             }
 
             self.wiki_api_call(params)
+
             # Save the page_id to get the url with get_url_page_wiki()
             self.page_id = self.data['query']['pageids']
             # Save the description as a story of GrandPy
-            self.description = self.data['query']['pages'][self.page_id[0]]['extract']
-            return self.page_id, self.description
+            description = self.data['query']['pages'][self.page_id[0]]['extract']
+
+            return self.page_id, description, True
 
         except KeyError:
             print('Error: ', KeyError)
+            self.page_id = ['0']
+            description = ""
+
+            return self.page_id, description, False
 
     def get_url_page_wiki(self):
         """ Define the parameters for the second Wiki API call,
@@ -65,9 +69,13 @@ class Wiki:
             }
 
             self.wiki_api_call(params)
-            # Save the url to propose it to the user as an in-depth look of the query
-            self.url = self.data['query']['pages'][self.page_id[0]]['fullurl']
-            return self.url
+            if self.page_id != ['0']:
+                # Save the url to propose it to the user as an in-depth look of the query
+                url = self.data['query']['pages'][self.page_id[0]]['fullurl']
+            else:
+                url = 'https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal'
+
+            return url
 
         except KeyError:
             print('Error: ', KeyError)

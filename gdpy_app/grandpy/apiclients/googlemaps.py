@@ -14,10 +14,6 @@ class Maps:
     def __init__(self, clean_query):
         """ Initialisation """
         self.clean_query = clean_query
-        self.latitude = 0
-        self.longitude = 0
-        self.formatted_address = 0
-        self.found_place = ''
 
     def call_maps(self):
         """ Request and search coordinate from Google Maps Geocoding API"""
@@ -33,17 +29,17 @@ class Maps:
 
         if response_json['status'] == 'OK':
             geometry = response_json['results'][0]['geometry']
-            self.latitude = geometry['location']['lat']
-            self.longitude = geometry['location']['lng']
-            self.formatted_address = response_json['results'][0]['formatted_address']
-            self.found_place = True
+            latitude = geometry['location']['lat']
+            longitude = geometry['location']['lng']
+            formatted_address = response_json['results'][0]['formatted_address']
+            found_place = True
 
         else:
             print('STATUS ERROR: ', req.status_code)
             # Give coordinates and address as a dreamed destination for GrandPy
-            self.latitude = -42.1080556
-            self.longitude = 171.3361111111111
-            self.formatted_address = ''
-            self.found_place = False
+            latitude = -42.1080556
+            longitude = 171.3361111111111
+            formatted_address = "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
+            found_place = False
 
-        return self.latitude, self.longitude, self.formatted_address, self.found_place
+        return latitude, longitude, formatted_address, found_place

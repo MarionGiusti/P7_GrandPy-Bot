@@ -10,6 +10,7 @@ import unicodedata
 
 from gdpy_app.grandpy.words import STOP_WORDS, QUESTION_WORDS
 
+
 class QueryParser:
     """ Class to 'clean' the user input,
     in order to detect an adress using stop words."""
@@ -18,7 +19,6 @@ class QueryParser:
         """ Initialisation """
         self.user_input = user_input
         self.query_no_accent = ''
-        self.query_words = []
 
     def normalize_query(self):
         """ Sentence in lower case"""
@@ -30,11 +30,14 @@ class QueryParser:
             unicodedata.normalize('NFD', query_no_punctuation) \
             if unicodedata.category(c) != 'Mn'))
 
+        return query_lower, query_no_punctuation, self.query_no_accent
+
     def parser_words(self):
         """ Remove stop words in order to get only relevant words"""
         words = self.query_no_accent.split()
+        query_words = []
         for word in words:
             if (word not in STOP_WORDS and word not in QUESTION_WORDS):
-                self.query_words.append(word)
-        self.query_words = ' '.join(self.query_words)
-        return self.query_words
+                query_words.append(word)
+        query_words = ' '.join(query_words)
+        return query_words

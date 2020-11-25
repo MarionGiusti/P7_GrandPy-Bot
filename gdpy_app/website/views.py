@@ -1,53 +1,59 @@
-from flask import render_template, url_for, request, jsonify
-
+"""
+Module views.py:
+- Create the routes for the application
+- Send back the response to the AJAX query
+"""
+from flask import render_template, request, jsonify
 
 from gdpy_app.website import app
 from gdpy_app.grandpy import appli
 
-# Config options - Make sure you created a 'config.py' file.
-app.config.from_object('config')
+# Config options - Make sure you created a 'config.py' file
 # To get one variable, tape app.config['MY_VARIABLE']
+app.config.from_object('config')
 
-## Define a page with Flask. @gdpy_app precise at which adress, what's follow will apply
 # Home page, so just '/'
 @app.route('/')
-# Function index that will be executed on the page "/"
 def index():
-	return render_template('index.html')
+    """ Function index that will be executed on the page "/" """
+    return render_template('index.html')
 
 @app.route('/process', methods=['POST'])
-# Function index for the Ajax query
 def process():
-	# Get the question from the HTTP request
-	# result = request.form['userInput'];
-	req = request.form
-	userQuery = req.get('userInput')
+    """ Function process: create response to the AJAX query """
+    #Get the question from the HTTP request
+    req = request.form
+    user_query = req.get('userInput')
 
-	# Call the function answer with the user input in argument. Get back a dictionnary
-	result = appli.answer(userQuery)
-	
-	firstAnswerGdPy = result['first_answer_gdpy']
-	secondAnswerGdPy = result['second_answer_gdpy']
-	cleanQuery = result['query']
-	latitude = result['latitude']
-	longitude = result['longitude']
-	adress_formatted = result['address']
-	found_place = result['found_place']
-	url_wiki = result['url_wiki']
-	description_wiki = result['description_wiki']
+    if user_query != '':
+        # Get back a dictionnary
+        result = appli.answer_dictionnary(user_query)
 
-	# Transform the dictionnary in json HTTP respons and return this respons.
-	if result:
-		return jsonify({
-			'userQuery': userQuery,
-			'cleanQuery': cleanQuery, 
-			'firstAnswerGdPy': firstAnswerGdPy,
-			'secondAnswerGdPy': secondAnswerGdPy,
-			'latitude': latitude,
-			'longitude': longitude,
-			'adress_formatted': adress_formatted,
-			'found_place': found_place,
-			'url_wiki': url_wiki,
-			'description_wiki': description_wiki
-			})
-	return jsonify({'error' : 'Missing data'})
+        # Transform the dictionnary in json HTTP respons and return this respons.
+        if result:
+            return jsonify({
+                'userQuery': user_query,
+                'cleanQuery': result['query'],
+                'firstAnswerGdPy': result['first_answer_gdpy'],
+                'secondAnswerGdPy': result['second_answer_gdpy'],
+                'latitude': result['latitude'],
+                'longitude': result['longitude'],
+                'adress_formatted': result['address'],
+                'found_place': result['found_place'],
+                'url_wiki': result['url_wiki'],
+                'description_wiki': result['description_wiki']
+                })
+        return jsonify({'error' : 'Missing data'})
+
+    return jsonify({
+            'userQuery': user_query,
+            'cleanQuery': '',
+            'firstAnswerGdPy': 'Faudrait peut-être écrire quelque chose...',
+            # 'secondAnswerGdPy': '',
+            # 'latitude': 'NULL',
+            # 'longitude':  'NULL',
+            'adress_formatted': '',
+            'found_place': False,
+            # 'url_wiki': '',
+            # 'description_wiki': ''
+            })

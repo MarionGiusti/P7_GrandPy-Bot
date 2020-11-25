@@ -1,21 +1,16 @@
 """ Lists of words for the parser"""
 
-# PLACE_WORDS = [
-# 			  "cinema","aquarium","restaurant", "musee", "theatre", 
-# 			  "ville", "eglise", "place", "port", "aeroport", "gare"
-# 			  ]
-
 QUESTION_WORDS = [
 				"hello", "salut", "bonjour", "hey", "yo", "ola", "hi",
 				"grandpy", "py", "bot", "pybot", "papy",
-				"dis", "moi", "sais", "ou", "trouve", "adresse", 
+				"dis", "moi", "sais", "ou", "trouve", "adresse",
 				"connais", "connaissez", "est-ce-que", "aller", "emmener"
 				]
 
 STOP_WORDS = [
 			"a","abord","absolument","afin","ah","ai","aie","ailleurs",
 			"ainsi","ait","allaient","allo","allons","allô","alors","anterieur",
-			"anterieure","anterieures","apres","après","as","assez","attendu","au", 
+			"anterieure","anterieures","apres","après","as","assez","attendu","au",
 			"aucun","aucune","aujourd","aujourd'hui","aupres","auquel","aura",
 			"auraient","aurait","auront","aussi","autre","autrefois","autrement",
 			"autres","autrui","aux","auxquelles","auxquels","avaient","avais",
@@ -108,15 +103,15 @@ PYBOT_ANSWER_GOOD = [
 PYBOT_ANSWER_LOST = [
 	"""Ca aurait été avec plaisir mon poussin, mais là je ne me souviens plus...\n
 	demande moi autre chose!""",
-	"""Oulala, je voudrais bien t'aider mais ça ne me revient pas !  
+	"""Oulala, je voudrais bien t'aider mais ça ne me revient pas !
 	Tu as une autre demande?""",
 	"""Dediou j'ai la mémoire qui flanche! Une autre requête? """,
 	"""Mouais, la boussole de jadis peine à trouver son chemin...\n
 	T'as pas quelque chose de plus facile pour ton Pybot? """,
-	"""Tu le fais exprès? Tu voulais me piéger? 
+	"""Tu le fais exprès? Tu voulais me piéger?
 	Bah voilà, t'as gagné, j'en sais RIEN! """,
 	"Entre nous...si je connais pas c'est que ça en vaut pas la peine!",
-	"""Mais oui, ça me parle....PAS! 
+	"""Mais oui, ça me parle....PAS!
 	Désolé chou, va falloir me demander autre chose."""
 ]
 
@@ -133,13 +128,13 @@ PYBOT_ANSWER_GET_STORY = [
 PYBOT_ANSWER_NO_STORY = [
 	"Fichtre! Je me souviens plus ce que je voulais te raconter...",
 	"T'y crois toi? J'ai perdu le fil.",
-	"""Sapristi, ça m'agace quand je perds la boule. 
+	"""Sapristi, ça m'agace quand je perds la boule.
 	Je l'avais sur le bout de la langue mon histoire.""",
 	"Psssst, tu veux dormir moins bête? Et bah non, reste bête ça te vas bien.",
 	"Alors là, j'ai beau chercher, j'ai rien à ajouter...",
 	"Voilà, voilà...parfois il faut savoir rester concis.",
-	"""Ooooh la vie d'un pirate à bord d'une frégateeee, 
-	c'est la plus belleeee des vies!\n Quand je ne sais plus quoi dire,
+	"""Ooooh la vie d'un pirate à bord d'une frégateeee,
+	 c'est la plus belleeee des vies!\n Quand je ne sais plus quoi dire,
 	je chante. Bécot.
 	"""
 ]
