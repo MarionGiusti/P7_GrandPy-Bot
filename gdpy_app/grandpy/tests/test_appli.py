@@ -1,71 +1,32 @@
-import pytest 
-import json
-import random
+"""
+Test the module apply.py
+"""
+from gdpy_app.grandpy import appli
 
-from gdpy_app.grandpy.words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST, PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
+QUESTION = "Hello GrandPy! Tu sais où se trouve l'aquarium Océanopolis à Brest?"
 
-# question = "Hello GrandPy! Tu sais où se trouve l'aquarium Océanopolis à Brest?"
+def test_get_query_clean():
+    assert appli.analyse_question(QUESTION) == "aquarium oceanopolis brest"
 
-def test_first_answer_empty_formatted_address():
-    """
-    Verify the creation of a the response of gdpy.
-    How with random ? It will never be  the same answer.
-    Verify that the answer is the possible choice of answers ?
-    """
+def test_get_first_answer_gdpy_if_found_place_false():
+    result_maps = (0,0,'', False)
+    first_answer_gdpy = appli.create_first_answer(result_maps)
+    assert first_answer_gdpy in appli.PYBOT_ANSWER_LOST
 
-# #     script.answer(userInput)
-#     # query = QueryParser(question)
-#     # queryNormalize = query.normalize_query()
-#     # queryClean = query.parser_words()
+def test_get_first_answer_gdpy_if_found_place_true():
+    result_maps = (48.3899736, -4.4356012,
+         'Port de Plaisance du Moulin Blanc, 29200 Brest, France', True)
+    first_answer_gdpy = appli.create_first_answer(result_maps)
+    assert first_answer_gdpy in appli.PYBOT_ANSWER_GOOD
 
-#     # query_maps = googlemaps.Maps(query.query_words)
-#     # query_maps.call_maps()
+def test_get_second_answer_gdpy_if_no_description():
+    result_description = (['0'], '', False)
+    second_answer_gdpy = appli.create_second_answer(result_description)
+    assert second_answer_gdpy in appli.PYBOT_ANSWER_NO_STORY
 
-    formatted_address = ''
-
-    if formatted_address == '':
-        first_answer_gdpy = random.choice(PYBOT_ANSWER_LOST);
-        formatted_address = "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
-    else:
-        first_answer_gdpy = random.choice(PYBOT_ANSWER_GOOD);
-
-
-    assert first_answer_gdpy in PYBOT_ANSWER_LOST 
-    assert formatted_address == "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
-
-def test_first_answer_with_formatted_address():
-    formatted_address = 'Port de Plaisance du Moulin Blanc, 29200 Brest, France'
-
-    if formatted_address == '':
-        first_answer_gdpy = random.choice(PYBOT_ANSWER_LOST);
-        formatted_address = "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
-    else:
-        first_answer_gdpy = random.choice(PYBOT_ANSWER_GOOD);
-
-    assert first_answer_gdpy in PYBOT_ANSWER_GOOD 
-
-
-def test_second_answer_empty_wiki_description():
-    wiki_description = ''
-
-    if wiki_description == '':
-        second_answer_gdpy = random.choice(PYBOT_ANSWER_NO_STORY)
-        wiki_description = ''
-        wiki_url = ''
-    else:
-        second_answer_gdpy = random.choice(PYBOT_ANSWER_GET_STORY)
-
-    assert second_answer_gdpy in PYBOT_ANSWER_NO_STORY
-
-
-def test_second_answer_empty_wiki_description():
-    wiki_description = 'Océanopolis est un centre de culture scientifique consacré aux océans'
-
-    if wiki_description == '':
-        second_answer_gdpy = random.choice(PYBOT_ANSWER_NO_STORY)
-        wiki_description = ''
-        wiki_url = ''
-    else:
-        second_answer_gdpy = random.choice(PYBOT_ANSWER_GET_STORY)
-
-    assert second_answer_gdpy in PYBOT_ANSWER_GET_STORY
+def test_get_second_answer_gdpy_if_description():
+    result_description = (['150231'],
+        'Océanopolis est un centre de culture scientifique consacré aux océans, '\
+         'situé à Brest, près du port de plaisance du Moulin Blanc.', True)
+    second_answer_gdpy = appli.create_second_answer(result_description)
+    assert second_answer_gdpy in appli.PYBOT_ANSWER_GET_STORY

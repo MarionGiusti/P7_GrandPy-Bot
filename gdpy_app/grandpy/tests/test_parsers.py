@@ -1,42 +1,33 @@
-import pytest 
-import re
-import unicodedata
-
+"""
+Test the module parsers.py
+"""
 from grandpy.parsers import QueryParser
-from grandpy.words import STOP_WORDS, QUESTION_WORDS
-
-userInput = "Hello GrandPy! Tu sais où se trouve l'aquarium Océanopolis à Brest?"
 
 class TestQueryParser:
-	# Create an instance of the class QueryParser
-    query = QueryParser(userInput)
+    # Create an instance of the class QueryParser
+    query = QueryParser("Hello GrandPy! Tu sais où se trouve l'aquarium "\
+     "Océanopolis à Brest?")
+
+    def setup_method(self):
+        self.user_input = "Hello GrandPy! Tu sais où se trouve l'aquarium "\
+     "Océanopolis à Brest?"
+        self.normalize_query = self.query.normalize_query()
+        self.clean_query = self.query.parser_words()
 
     def test_set_up_query_userInput_attribute_is_correct(self):
-        assert self.query.userInput == userInput
+        assert self.user_input == self.query.user_input
 
     def test_function_lower_query(self):
-        query_lower = self.query.userInput.lower()
-        assert query_lower == "hello grandpy! tu sais où se trouve l'aquarium océanopolis à brest?"
+        assert self.normalize_query[0] == "hello grandpy! tu sais où se "\
+         "trouve l'aquarium océanopolis à brest?"
 
     def test_function_no_punctuation(self):
-        query_lower = "hello grandpy! tu sais où se trouve l'aquarium océanopolis à brest?"
-        query_no_punctuation = re.sub(r"[!#$%&'()*+,-./:;<=>?@\^_`{|}~]+\ *", " ", query_lower)
-        assert query_no_punctuation == "hello grandpy tu sais où se trouve l aquarium océanopolis à brest "
+        assert self.normalize_query[1] == "hello grandpy tu sais où se "\
+         "trouve l aquarium océanopolis à brest "
 
     def test_function_no_accent(self):
-        query_no_punctuation = "hello grandpy tu sais où se trouve l aquarium océanopolis à brest "
-        query_no_accent = ''.join((c for c in unicodedata.normalize('NFD', query_no_punctuation) if unicodedata.category(c) != 'Mn'))
-        assert query_no_accent == "hello grandpy tu sais ou se trouve l aquarium oceanopolis a brest "
-
-    #     self.query.query_no_accent = ''.join((c for c in unicodedata.normalize('NFD', query_no_punctuation) if unicodedata.category(c) != 'Mn'))
-    #     assert self.query.query_no_accent == "hello grandpy tu sais ou se trouve l aquarium oceanopolis a brest "
-
-    def test_the_method_normalize_query_minimize_letter_delete_accent_punctuation(self):
-        self.query.normalize_query()
-        assert self.query.query_no_accent  == "hello grandpy tu sais ou se trouve l aquarium oceanopolis a brest "
-
+        assert self.normalize_query[2] == "hello grandpy tu sais ou se "\
+         "trouve l aquarium oceanopolis a brest "
 
     def test_the_method_parser_words_give_clean_query_with_stopwords(self):
-        self.query.parser_words()
-        assert self.query.query_words == "aquarium oceanopolis brest"
-
+        assert  self.clean_query == "aquarium oceanopolis brest"
