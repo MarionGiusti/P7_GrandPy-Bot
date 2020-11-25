@@ -86,14 +86,16 @@ $(document).ready(function(){
 				message = first_message;
 				new_mess_gdpy();
 				// Show the map from GoogleMaps
-				$map.show();
+				if (data.adress_formatted != '') {
+					$map.show();
+				}
 			}, 1000);
 
 			initMap(data.latitude, data.longitude);
 
 			/* Display the second message of GrandPy only if the call of API Googlemaps
 			 found a place */
-			if (data.found_place = true) {
+			if (data.found_place == true) {
 				setTimeout(function(){
 				message = second_message;
 				new_mess_gdpy();
