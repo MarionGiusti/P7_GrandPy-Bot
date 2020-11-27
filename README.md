@@ -99,46 +99,50 @@ The program counts 3 classes: QueryParser, Maps and Wiki.
 #### Classes:
 ##### QueryParser Class: parsers.py
 Methods to clean the user input
-	* normalize_query(): lower the letter, remove accent and punctuations.
-	* parser_words(): remove stop words in order to have a kind of filter to keep the most indicative part.
+- normalize_query(): lower the letter, remove accent and punctuations.
+- parser_words(): remove stop words in order to have a kind of filter to keep the most indicative part.
 Get a clean query !
 
 ##### Maps Class: googlemaps.py
 Method to request the GoogleMaps API
-	* call_maps() : call the api with the clean query. From the json response, get coordinates and address. If 'status error' in the json respon, assign coordinates and address corresponding to a place for GrandPy holidays.
+- call_maps() : call the api with the clean query. From the json response, get coordinates and address. If 'status error' in the json respon, assign coordinates and address corresponding to a place for GrandPy holidays.
 
 ##### Wiki Class: wikipedia.py
 Method to request the MediaWiki API
-	* wiki_api_call(): call the api with the clean query and get json respons.
+- wiki_api_call(): call the api with the clean query and get json respons.
 
 Methods to define the parameters of the request
-	* get_description_page_wiki(): parameters to get a description of a wiki page.
-	* get_url_page_wiki(): parameters to get the url of the wiki page used for the description.
+- get_description_page_wiki(): parameters to get a description of a wiki page.
+- get_url_page_wiki(): parameters to get the url of the wiki page used for the description.
 
 #### Main function: appli.py
 Functions to create instances from the QueryParser, Maps and Wiki classes.
-	* analyse_question(), data_apis()
+- analyse_question(), data_apis()
 Functions to create GrandPy's answers depending on the api responses.
-	* create_first_answer(), create_second_answer()
+- create_first_answer(), create_second_answer()
 Function to create a dictionnary with all the informations useful to send back to the client part.
-	* answer_dictionnary()
+- answer_dictionnary()
 
 ### Usage:
-The user enter in the input form a question about a place he would like to localise:
-	"Hello GrandPy! Est-ce-que tu connais l'adresse de l'aquarium Océanopolis à Brest?"
+The user enter in the input form a question about a place he would like to localise:  
 
+	"Hello GrandPy! Est-ce-que tu connais l'adresse de l'aquarium Océanopolis à Brest?"
 The user input will be display above in the dialog area.
 It wakes up GrandPy, its picture change, he is thinking...
 
 ###### GrandPy found a place:
-A first answer will appear and a map with the localication of the address. He can reply something like this:
- "Mais oui mon biquet ! Là voilà :" + the address
+A first answer will appear and a map with the localication of the address. He can reply something like this:  
+
+	"Mais oui mon biquet ! Là voilà :" + the address
 Then if GrandPy found a story about the user input, he may say:
-	"Dis poussin, je t'ai déjà raconté cette histoire?" + few lines about the story
-But if no memory comes to him, he will probably say:
+	
+	"Dis poussin, je t'ai déjà raconté cette histoire?" + few lines about the story  
+But if no memory comes to him, he will probably say:  
+
 	"Fichtre! Je me souviens plus ce que je voulais te raconter..."
 
 ##### GrandPy didn't found a place:
-Only one answer will appear. GrandPy will reply with a random answer and say that he needs holidays:
-	"Ca aurait été avec plaisir mon poussin, mais là je ne me souviens plus...\n
+Only one answer will appear. GrandPy will reply with a random answer and say that he needs holidays:  
+
+	"Ca aurait été avec plaisir mon poussin, mais là je ne me souviens plus...  
 	demande moi autre chose!" + "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
