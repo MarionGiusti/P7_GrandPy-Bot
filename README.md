@@ -35,7 +35,6 @@ Process the query sending from the user (client part) and research the different
 - MediaWiki: in order to have information about the user input so that GrandPy can tell a little story.
 
 ### Architecture:
-	*
 	.env
 	config.py
 	requirements.txt
@@ -63,7 +62,7 @@ Process the query sending from the user (client part) and research the different
 		templates
 			index.html
 		views.py
-	*
+
 
 ### Getting Started:
 ##### Prerequisites:
