@@ -20,8 +20,7 @@ class Maps:
         base_url = 'https://maps.googleapis.com/maps/api/geocode/json?'
         address = self.clean_query
         params = {
-            # 'key': app.config['GOOGLEMAPS_KEY'],
-            'key': 'AIzaSyBb1Q1zKzzg7ShGr3HrhhkiusRGdU7a6UU',
+            'key': app.config['GOOGLEMAPS_KEY'],
             'address': address
         }
 

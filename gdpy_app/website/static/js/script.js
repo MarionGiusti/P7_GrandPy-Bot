@@ -95,9 +95,6 @@ $(document).ready(function(){
 			}, 1000);
 
 			initMap(data.latitude, data.longitude);
-			console.log("LATITUDE", data.latitude)
-			console.log("CLEAN", data.clean_query)
-			console.log("STATUS", data.respons_status_gmaps)
 
 			/* Display the second message of GrandPy only if the call of API Googlemaps
 			 found a place */
