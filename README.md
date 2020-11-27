@@ -25,24 +25,24 @@ Process the query sending from the user (client part) and research the different
 
 #### Built With:
 ##### Languages and tools used:
-	* Python 3.8.2 and its framework Flask
-	* HTML5, CSS3, JS
-	* Responsiv design with Bootstrap
-	* Dynamic update of the application view with AJAX function
-	* Test driven development
+- Python 3.8.2 and its framework Flask
+- HTML5, CSS3, JS
+- Responsiv design with Bootstrap
+- Dynamic update of the application view with AJAX function
+- Test driven development
 ##### API:
-	* GoogleMaps: in order to get an address from the user input and display a map.
-	* MediaWiki: in order to have information about the user input so that GrandPy can tell a little story.
+- GoogleMaps: in order to get an address from the user input and display a map.
+- MediaWiki: in order to have information about the user input so that GrandPy can tell a little story.
 
 ### Architecture:
-.env
-config.py
-requirements.txt
-run.py
-gdpy_app
-	grandpy
-		appli.py
-		parsers.py
+	*
+	.env
+	config.py
+	requirements.txt
+	run.py
+	 	grandpy
+			appli.py
+			parsers.py
 		words.py
 		apiclients
 			googlemaps.py
@@ -63,6 +63,7 @@ gdpy_app
 		templates
 			index.html
 		views.py
+	*
 
 ### Getting Started:
 ##### Prerequisites:
