@@ -66,8 +66,8 @@ Process the query sending from the user (client part) and research the different
 
 ### Getting Started:
 ##### Prerequisites:
-Python must be installed.
-Virtualenv Module too, otherwise : 
+- Python must be installed.
+- Virtualenv Module too, otherwise:
 	* pip install virtualenv
 
 ##### Installation:
