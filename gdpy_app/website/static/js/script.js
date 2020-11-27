@@ -86,8 +86,10 @@ $(document).ready(function(){
 				message = first_message;
 				new_mess_gdpy();
 				// Show the map from GoogleMaps
-				if (data.adress_formatted != '') {
+				if (data.found_place) {
 					$map.show();
+				} else {
+					$map.hide();
 				}
 			}, 1000);
 
@@ -95,7 +97,7 @@ $(document).ready(function(){
 
 			/* Display the second message of GrandPy only if the call of API Googlemaps
 			 found a place */
-			if (data.found_place == true) {
+			if (data.found_place) {
 				setTimeout(function(){
 				message = second_message;
 				new_mess_gdpy();
