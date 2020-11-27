@@ -49,11 +49,6 @@ def process():
             'userQuery': user_query,
             'cleanQuery': '',
             'firstAnswerGdPy': 'Faudrait peut-être écrire quelque chose...',
-            # 'secondAnswerGdPy': '',
-            # 'latitude': 'NULL',
-            # 'longitude':  'NULL',
             'adress_formatted': '',
             'found_place': False,
-            # 'url_wiki': '',
-            # 'description_wiki': ''
             })

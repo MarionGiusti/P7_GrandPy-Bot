@@ -26,7 +26,7 @@ def data_apis(query_clean):
     # Get the first lines from an article corresponding to the queryClean
     query_wiki = Wiki(query_clean)
     result_description = query_wiki.get_description_page_wiki()
-    result_url = query_wiki.get_url_page_wiki()
+    result_url = query_wiki.get_url_page_wiki(result_description[0])
 
     return result_maps, result_description, result_url
 

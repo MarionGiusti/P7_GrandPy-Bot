@@ -56,7 +56,8 @@ class Wiki:
 
             return self.page_id, description, False
 
-    def get_url_page_wiki(self):
+    # def get_url_page_wiki(self):
+    def get_url_page_wiki(self, page_id):
         """ Define the parameters for the second Wiki API call,
         to get the url of the wiki page """
         try:
@@ -65,13 +66,13 @@ class Wiki:
                 'format':'json',
                 'prop':'info',
                 'inprop':'url',
-                'pageids':self.page_id
+                'pageids':page_id
             }
 
             self.wiki_api_call(params)
-            if self.page_id != ['0']:
+            if page_id != ['0']:
                 # Save the url to propose it to the user as an in-depth look of the query
-                url = self.data['query']['pages'][self.page_id[0]]['fullurl']
+                url = self.data['query']['pages'][page_id[0]]['fullurl']
             else:
                 url = 'https://fr.wikipedia.org/wiki/Wikip%C3%A9dia:Accueil_principal'
 

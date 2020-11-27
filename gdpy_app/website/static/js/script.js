@@ -76,6 +76,7 @@ $(document).ready(function(){
 			};
 
 			new_mess_user();
+			console.log(data.latitude, data.longitude);
 
 			// Change the image of GrandPy when user input submitted.
 			$img_pybot.attr('src', 'static/img/pybothmm.png');
