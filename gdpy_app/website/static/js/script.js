@@ -28,9 +28,9 @@ $(document).ready(function(){
 			// Empty the search field of the form
 			$('#adresse').val('');
 			// Set the message of GrandPy. First one for the address.
-			var first_message = data.firstAnswerGdPy + ' ' + data.adress_formatted;
+			var first_message = data.first_answer_gdpy + ' ' + data.adress_formatted;
 			// and second one for the description.
-			var second_message = data.secondAnswerGdPy + ' ' + data.description_wiki;
+			var second_message = data.second_answer_gdpy + ' ' + data.description_wiki;
 			var message;
 
 			/* Function to create the message of the user in order to
@@ -46,7 +46,7 @@ $(document).ready(function(){
 				user.appendChild(document.createTextNode('User: '));
 				var user_mess = document.createElement("span");
 				user_mess.setAttribute("id", "user_mess");
-				user_mess.append(data.userQuery);
+				user_mess.append(data.user_query);
 				user.append(user_mess);
 				var result = document.getElementById("result");
 				result.append(user);
@@ -75,8 +75,11 @@ $(document).ready(function(){
 				$('p#gdpy:last').css({'font-family': 'Black_jackregular'});
 			};
 
+			console.log(data.user_query, data.clean_query);
+
 			new_mess_user();
 			console.log(data.latitude, data.longitude);
+			console.log(data.respons_status_gmaps)
 
 			// Change the image of GrandPy when user input submitted.
 			$img_pybot.attr('src', 'static/img/pybothmm.png');

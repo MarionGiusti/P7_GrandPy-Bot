@@ -42,4 +42,4 @@ class Maps:
             formatted_address = "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
             found_place = False
 
-        return latitude, longitude, formatted_address, found_place
+        return latitude, longitude, formatted_address, found_place, response_json['status']

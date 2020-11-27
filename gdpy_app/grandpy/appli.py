@@ -74,7 +74,8 @@ def answer_dictionnary(question):
         'address': result_apis[0][2],
         'found_place': result_apis[0][3],
         'description_wiki': result_apis[1][1],
-        'url_wiki': result_apis[2]
+        'url_wiki': result_apis[2],
+        'respons_status_gmaps' = result_apis[0][4]
     }
 
     return info_answer
