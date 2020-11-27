@@ -11,12 +11,6 @@ from gdpy_app.grandpy.parsers import QueryParser
 from gdpy_app.grandpy.words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST
 from gdpy_app.grandpy.words import PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
 
-# from apiclients.googlemaps import Maps
-# from apiclients.wikipedia import Wiki
-# from parsers import QueryParser
-# from words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST
-# from words import PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
-
 def analyse_question(question):
     """ Analyse the user's question """
     query = QueryParser(question)
@@ -83,5 +77,3 @@ def answer_dictionnary(question):
     }
 
     return info_answer
-
-# answer_dictionnary('brest')

@@ -27,7 +27,7 @@ class Maps:
         req = requests.get(base_url, params=params)
         response_json = req.json()
 
-        resp_status = response_json['status']
+        respons_status = response_json['status']
 
         if response_json['status'] == 'OK':
             geometry = response_json['results'][0]['geometry']
@@ -44,4 +44,4 @@ class Maps:
             formatted_address = "J'ai besoin de vacances...Regarde la carte, tu connais ce coin?"
             found_place = False
 
-        return latitude, longitude, formatted_address, found_place, resp_status
+        return latitude, longitude, formatted_address, found_place, respons_status
