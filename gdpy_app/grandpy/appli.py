@@ -11,6 +11,12 @@ from gdpy_app.grandpy.parsers import QueryParser
 from gdpy_app.grandpy.words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST
 from gdpy_app.grandpy.words import PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
 
+# from apiclients.googlemaps import Maps
+# from apiclients.wikipedia import Wiki
+# from parsers import QueryParser
+# from words import PYBOT_ANSWER_GOOD, PYBOT_ANSWER_LOST
+# from words import PYBOT_ANSWER_GET_STORY, PYBOT_ANSWER_NO_STORY
+
 def analyse_question(question):
     """ Analyse the user's question """
     query = QueryParser(question)
@@ -62,8 +68,6 @@ def answer_dictionnary(question):
     result_description = result_apis[1]
     first_answer_gdpy = create_first_answer(result_maps)
     second_answer_gdpy = create_second_answer(result_description)
-    print('description:', result_description[1])
-    print('url:', result_apis[2])
 
     info_answer = {
         'query': query_clean,
@@ -75,7 +79,9 @@ def answer_dictionnary(question):
         'found_place': result_apis[0][3],
         'description_wiki': result_apis[1][1],
         'url_wiki': result_apis[2],
-        'respons_status_gmaps' = result_apis[0][4]
+        'respons_status_gmaps': result_apis[0][4]
     }
 
     return info_answer
+
+# answer_dictionnary('brest')

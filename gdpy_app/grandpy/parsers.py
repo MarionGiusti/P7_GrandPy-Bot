@@ -9,6 +9,7 @@ import re
 import unicodedata
 
 from gdpy_app.grandpy.words import STOP_WORDS, QUESTION_WORDS
+# from words import STOP_WORDS, QUESTION_WORDS
 
 
 class QueryParser:

@@ -75,11 +75,8 @@ $(document).ready(function(){
 				$('p#gdpy:last').css({'font-family': 'Black_jackregular'});
 			};
 
-			console.log(data.user_query, data.clean_query);
 
 			new_mess_user();
-			console.log(data.latitude, data.longitude);
-			console.log(data.respons_status_gmaps)
 
 			// Change the image of GrandPy when user input submitted.
 			$img_pybot.attr('src', 'static/img/pybothmm.png');
@@ -98,6 +95,9 @@ $(document).ready(function(){
 			}, 1000);
 
 			initMap(data.latitude, data.longitude);
+			console.log("LATITUDE", data.latitude)
+			console.log("CLEAN", data.clean_query)
+			console.log("STATUS", data.respons_status_gmaps)
 
 			/* Display the second message of GrandPy only if the call of API Googlemaps
 			 found a place */
