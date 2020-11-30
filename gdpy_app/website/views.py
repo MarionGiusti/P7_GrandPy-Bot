@@ -42,8 +42,7 @@ def process():
                 'found_place': result['found_place'],
                 'url_wiki': result['url_wiki'],
                 'description_wiki': result['description_wiki'],
-                'respons_status_gmaps': result['respons_status_gmaps'],
-                'req_url': result['req_url']
+                'respons_status_gmaps': result['respons_status_gmaps']
                 })
         return jsonify({'error' : 'Missing data'})
 
@@ -52,5 +51,5 @@ def process():
             'clean_query': '',
             'first_answer_gdpy': 'Faudrait peut-être écrire quelque chose...',
             'adress_formatted': '',
-            'found_place': False,
+            'found_place': False
             })
