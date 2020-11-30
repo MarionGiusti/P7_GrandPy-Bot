@@ -85,6 +85,8 @@ Process the query sending from the user (client part) and research the different
 	6- Create a .env file in root of the repository. Write in it your GoogleMaps API Key:
 	GOOGLEMAPS_KEY=yourkey
 
+	7. Careful that the name of your api is the same in config.py, in googlemaps.py and index.html 
+
 	7- Run the program on your terminal:
 	run.py
 
@@ -93,6 +95,7 @@ By default, after running the application will be accessible here: http://127.0.
 ###### Online version:
 The application is deployed on Heroku:  
 https://grandpybot-is-your-guide.herokuapp.com/
+If you want to deployed the app on heroku too, you must create 2 API keys, one for the front which will be retrain to your site, and one for the back which will not be retrain.
 
 ### Features:
 The program counts 3 classes: QueryParser, Maps and Wiki.
