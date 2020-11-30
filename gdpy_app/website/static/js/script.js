@@ -87,11 +87,7 @@ $(document).ready(function(){
 				message = first_message;
 				new_mess_gdpy();
 				// Show the map from GoogleMaps
-				if (data.found_place) {
-					$map.show();
-				} else {
-					$map.hide();
-				}
+				$map.show();
 			}, 1000);
 
 			initMap(data.latitude, data.longitude);

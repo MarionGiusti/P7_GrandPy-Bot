@@ -42,7 +42,8 @@ def process():
                 'found_place': result['found_place'],
                 'url_wiki': result['url_wiki'],
                 'description_wiki': result['description_wiki'],
-                'respons_status_gmaps': result['respons_status_gmaps']
+                'respons_status_gmaps': result['respons_status_gmaps'],
+                'req_url': result['req_url']
                 })
         return jsonify({'error' : 'Missing data'})
 
