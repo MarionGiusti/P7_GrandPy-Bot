@@ -1,3 +1,4 @@
 import os
 
-GOOGLEMAPS_KEY = os.environ.get('GOOGLEMAPS_KEY')
+GOOGLEMAPS_KEY_FRONT = os.environ.get('GOOGLEMAPS_KEY_FRONT')
+GOOGLEMAPS_KEY_BACK = os.environ.get('GOOGLEMAPS_KEY_BACK')
