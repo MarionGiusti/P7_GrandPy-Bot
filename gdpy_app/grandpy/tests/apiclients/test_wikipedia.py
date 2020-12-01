@@ -10,7 +10,8 @@ class MockResponse():
         self.key_json = key_json
 
     def mock_resp(self):
-        with codecs.open(os.path.join(os.path.dirname(__file__))+"\\dataSet_mocks.json","r", encoding='utf-8') as read_file:
+        with codecs.open(os.path.join(os.path.dirname(__file__))+
+            "\\dataSet_mocks.json","r", encoding='utf-8') as read_file:
             data = json.loads(read_file.read())
         for i in data[self.key_json]:
             response = i
@@ -32,14 +33,16 @@ class TestWiki:
         key_json = 'wiki_description_results_ok'
         response_json = MockResponse(key_json).mock_resp()
         page_id = response_json['query']['pageids']
-                                            
+
         def mock_get_description_page_wiki_is_ok(*args, **kwargs):
             return MockResponse(key_json)
 
         monkeypatch.setattr(requests, 'get', mock_get_description_page_wiki_is_ok)
         if response_json['batchcomplete'] == '':
-            assert self.wiki.get_description_page_wiki() == (response_json['query']['pageids'], response_json['query']['pages'][page_id[0]]['extract'], True)
-    
+            assert self.wiki.get_description_page_wiki() == (
+                response_json['query']['pageids'],
+                response_json['query']['pages'][page_id[0]]['extract'], True)
+
     def test_get_url_page_wiki_is_ok(self, monkeypatch):
         key_json = 'wiki_url_results_ok'
         response_json = MockResponse(key_json).mock_resp()
@@ -64,7 +67,7 @@ class TestWiki_empty:
         key_json = 'wiki_description_results_error'
         response_json = MockResponse(key_json).mock_resp()
         page_id = ['0']
-                                            
+
         def mock_get_description_page_wiki_not_ok(*args, **kwargs):
             return MockResponse(key_json)
 

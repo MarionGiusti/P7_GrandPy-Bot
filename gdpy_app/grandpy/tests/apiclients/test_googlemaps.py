@@ -31,7 +31,7 @@ class TestMaps:
         self.clean_query = clean_query
 
     def test_set_up_maps_clean_query_is_ok(self):
-        assert self.clean_query == self.maps.clean_query   
+        assert self.clean_query == self.maps.clean_query
 
     def test_call_maps_return_results_status_ok(self, monkeypatch):
         key_json = 'google_results_ok'
@@ -46,7 +46,7 @@ class TestMaps:
             assert self.maps.call_maps() == (response_json['results'][0]
             	['geometry']['location']['lat'],
             	response_json['results'][0]['geometry']['location']['lng'],
-            	response_json['results'][0]['formatted_address'], True)
+            	response_json['results'][0]['formatted_address'], True, 'OK')
 
     def test_call_maps_return_results_status_error(self, monkeypatch):
         key_json = 'google_results_error'
@@ -60,4 +60,5 @@ class TestMaps:
         print("choun", self.maps.call_maps())
         if response_json['status'] == 'INVALID_REQUEST':
             assert self.maps.call_maps() == (-42.1080556, 171.3361111111111,
-            	"J'ai besoin de vacances...Regarde la carte, tu connais ce coin?", False)
+            	"J'ai besoin de vacances...Regarde la carte, tu connais ce coin?",
+                 False, 'INVALID_REQUEST')
