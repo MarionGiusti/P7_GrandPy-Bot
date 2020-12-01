@@ -15,7 +15,6 @@ class Wiki:
         self.clean_query = clean_query
         self.base_url = 'https://fr.wikipedia.org/w/api.php'
         self.data = {}
-        self.page_id = []
 
     def wiki_api_call(self, params):
         """ Send the request to the Wiki API depending on the parameters """
@@ -43,18 +42,18 @@ class Wiki:
             self.wiki_api_call(params)
 
             # Save the page_id to get the url with get_url_page_wiki()
-            self.page_id = self.data['query']['pageids']
+            page_id = self.data['query']['pageids']
             # Save the description as a story of GrandPy
-            description = self.data['query']['pages'][self.page_id[0]]['extract']
+            description = self.data['query']['pages'][page_id[0]]['extract']
 
-            return self.page_id, description, True
+            return page_id, description, True
 
         except KeyError:
             print('Error: ', KeyError)
-            self.page_id = ['0']
+            page_id = ['0']
             description = ""
 
-            return self.page_id, description, False
+            return page_id, description, False
 
     # def get_url_page_wiki(self):
     def get_url_page_wiki(self, page_id):
