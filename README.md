@@ -39,29 +39,30 @@ Process the query sending from the user (client part) and research the different
 	config.py
 	requirements.txt
 	run.py
+	gdpy_app
 	 	grandpy
 			appli.py
 			parsers.py
-		words.py
-		apiclients
-			googlemaps.py
-			wikipedia.py
-		tests
-			test_parsers.py
-			test_appli.py
+			words.py
 			apiclients
-				test_googlemaps.py
-				test_wikipedia.py
-				dataSet_mocks.json
-	website
-		static
-			css
-			fonts
-			img
-			js
-		templates
-			index.html
-		views.py
+				googlemaps.py
+				wikipedia.py
+			tests
+				test_parsers.py
+				test_appli.py
+				apiclients
+					test_googlemaps.py
+					test_wikipedia.py
+					dataSet_mocks.json
+		website
+			static
+				css
+				fonts
+				img
+				js
+			templates
+				index.html
+			views.py
 
 
 ### Getting Started:
