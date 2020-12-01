@@ -9,10 +9,10 @@ $(document).ready(function(){
 	$('form').on('submit', function(event) {
 		event.preventDefault();
 		// Get the input field
-		var userInput = $('#adresse');
+		var userInput = $('#adress');
 		$.ajax({
 			data: {
-				userInput : $('#adresse').val(),
+				userInput : $('#adress').val(),
 			},
 			type : 'POST',
 			url : '/process',
@@ -26,7 +26,7 @@ $(document).ready(function(){
 
 		.done(function(data) {
 			// Empty the search field of the form
-			$('#adresse').val('');
+			$('#adress').val('');
 			// Set the message of GrandPy. First one for the address.
 			var first_message = data.first_answer_gdpy + ' ' + data.adress_formatted;
 			// and second one for the description.
