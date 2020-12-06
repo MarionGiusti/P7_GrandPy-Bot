@@ -41,7 +41,6 @@ class TestMaps:
             return MockResponse(200, key_json)
 
         monkeypatch.setattr(requests, 'get', mock_get_coordinates_and_formatted_address)
-        print("chou", self.maps.call_maps())
         if response_json['status'] == 'OK':
             assert self.maps.call_maps() == (response_json['results'][0]
             	['geometry']['location']['lat'],
@@ -51,13 +50,11 @@ class TestMaps:
     def test_call_maps_return_results_status_error(self, monkeypatch):
         key_json = 'google_results_error'
         response_json = MockResponse(400, key_json).mock_resp()
-        print('chon', response_json)
 
         def mock_get_coordinates_and_formatted_address(*args, **kwargs):
             return MockResponse(400, key_json)
 
         monkeypatch.setattr(requests, 'get', mock_get_coordinates_and_formatted_address)
-        print("choun", self.maps.call_maps())
         if response_json['status'] == 'INVALID_REQUEST':
             assert self.maps.call_maps() == (-42.1080556, 171.3361111111111,
             	"J'ai besoin de vacances...Regarde la carte, tu connais ce coin?",

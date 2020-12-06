@@ -55,7 +55,6 @@ class Wiki:
 
             return page_id, description, False
 
-    # def get_url_page_wiki(self):
     def get_url_page_wiki(self, page_id):
         """ Define the parameters for the second Wiki API call,
         to get the url of the wiki page """
